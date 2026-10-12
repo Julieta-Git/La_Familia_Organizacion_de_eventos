@@ -9,13 +9,17 @@
   const navToggle = document.getElementById("nav-toggle");
   const mainNav = document.getElementById("main-nav");
 
+  const desktopNav = window.matchMedia("(min-width: 1100px)");
   function closeNav() {
+    if (!mainNav.classList.contains("is-open")) return;
     mainNav.classList.remove("is-open");
+    document.body.style.overflow = "";
     navToggle.setAttribute("aria-expanded", "false");
     navToggle.setAttribute("aria-label", "Abrir menú");
   }
   function openNav() {
     mainNav.classList.add("is-open");
+    document.body.style.overflow = "hidden";
     navToggle.setAttribute("aria-expanded", "true");
     navToggle.setAttribute("aria-label", "Cerrar menú");
   }
@@ -28,8 +32,13 @@
       link.addEventListener("click", closeNav);
     });
     window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeNav();
+      if (e.key === "Escape" && mainNav.classList.contains("is-open")) {
+        closeNav();
+        navToggle.focus();
+      }
     });
+    // Si se agranda la ventana con el menú abierto, se cierra solo.
+    desktopNav.addEventListener("change", (e) => { if (e.matches) closeNav(); });
   }
 
   /* ---------- Una noche con nosotros: se enciende al llegar cada momento ---------- */
@@ -114,17 +123,24 @@
   const lightboxContent = document.getElementById("lightbox-content");
   const lightboxClose = document.getElementById("lightbox-close");
 
+  let lightboxOpener = null;
   document.querySelectorAll(".gallery-item").forEach((item) => {
     item.addEventListener("click", () => {
-      lightboxContent.setAttribute("data-ph", item.getAttribute("data-ph") || "");
+      const label = item.getAttribute("data-ph") || "";
+      lightboxContent.setAttribute("data-ph", label);
+      lightboxContent.setAttribute("aria-label", label);
+      lightboxOpener = item;
       lightbox.hidden = false;
       document.body.style.overflow = "hidden";
+      lightboxClose.focus();
     });
   });
 
   function closeLightbox() {
+    if (lightbox.hidden) return;
     lightbox.hidden = true;
     document.body.style.overflow = "";
+    if (lightboxOpener) lightboxOpener.focus();
   }
   if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
   if (lightbox) {
@@ -133,7 +149,10 @@
     });
   }
   window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && lightbox && !lightbox.hidden) closeLightbox();
+    if (!lightbox || lightbox.hidden) return;
+    if (e.key === "Escape") closeLightbox();
+    // El único control del visor es "Cerrar": el foco no se escapa detrás del visor.
+    if (e.key === "Tab") { e.preventDefault(); lightboxClose.focus(); }
   });
 
   /* ---------- Formulario de presupuesto → WhatsApp ---------- */
@@ -145,6 +164,10 @@
   const WHATSAPP_NUMBER = "5493704573516"; // Raúl. Cambiar si prefieren otro número como principal.
 
   if (form) {
+    // La fecha del evento no puede ser anterior a hoy.
+    const hoy = new Date();
+    form.fecha.min = `${hoy.getFullYear()}-${String(hoy.getMonth() + 1).padStart(2, "0")}-${String(hoy.getDate()).padStart(2, "0")}`;
+
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -152,9 +175,21 @@
       const telefono = form.telefono.value.trim();
       const evento = form.evento.value;
 
-      if (!nombre || !telefono || !evento) {
+      // Un teléfono argentino tiene al menos 8 dígitos (sin contar espacios ni guiones).
+      const telefonoValido = telefono.replace(/\D/g, "").length >= 8;
+      const invalidos = [
+        [form.nombre, !nombre],
+        [form.telefono, !telefonoValido],
+        [form.evento, !evento],
+      ];
+      invalidos.forEach(([campo, mal]) => campo.setAttribute("aria-invalid", String(mal)));
+      const primero = invalidos.find(([, mal]) => mal);
+      if (primero) {
+        formError.textContent = !telefonoValido && telefono
+          ? "Revisá el teléfono: escribilo con código de área, por ejemplo 3704 573516."
+          : "Completá nombre, teléfono y tipo de evento para poder enviar la consulta.";
         formError.hidden = false;
-        formError.scrollIntoView({ behavior: "smooth", block: "center" });
+        primero[0].focus();
         return;
       }
       formError.hidden = true;
@@ -172,7 +207,10 @@
         `Teléfono: ${telefono}`,
         `Tipo de evento: ${evento}`,
       ];
-      if (fecha) lineas.push(`Fecha: ${fecha}`);
+      if (fecha) {
+        const [a, m, d] = fecha.split("-");
+        lineas.push(`Fecha: ${d}/${m}/${a}`);
+      }
       if (lugar) lineas.push(`Lugar: ${lugar}`);
       if (invitados) lineas.push(`Cantidad de invitados: ${invitados}`);
       if (servicios.length) lineas.push(`Servicios: ${servicios.join(", ")}`);

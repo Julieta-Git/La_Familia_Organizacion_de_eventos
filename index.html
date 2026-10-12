@@ -4,613 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>La Familia — Organización de Eventos</title>
+<meta name="theme-color" content="#6B1E3A">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%236B1E3A'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='26' fill='%23FAF6F0'%3ELF%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="La Familia · Organización de Eventos">
+<meta property="og:title" content="La Familia — Organización de Eventos en Formosa">
+<meta property="og:description" content="Más de 20 años organizando casamientos, 15 años, cumpleaños y celebraciones familiares. Pedí tu presupuesto por WhatsApp.">
+<!-- Cuando haya una foto real: agregar <meta property="og:image" content="https://DOMINIO/og.jpg"> (1200×630) -->
 <meta name="description" content="La Familia. Organización de Eventos: más de 20 años armando casamientos, 15 años, cumpleaños y celebraciones familiares con atención directa y personalizada.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-/* =========================================================
-   LA FAMILIA — ORGANIZACIÓN DE EVENTOS
-   Estilo: elegante, cálido, festivo. Mobile-first (390px) → escritorio (1440px)
-   ========================================================= */
-
-:root{
-  --ivory: #FAF6F0;
-  --ivory-deep: #F1E9DD;
-  --bordeaux: #6B1E3A;
-  --bordeaux-dark: #501530;
-  --bordeaux-tint: #F4E4EA;
-  --gold: #C9A96E;
-  --gold-soft: #E8D9BC;
-  --ink: #2B2B2B;
-  --ink-soft: #5B4A4F;
-  --paper: #FFFFFF;
-
-  --font-display: "Playfair Display", Georgia, serif;
-  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-
-  --radius-s: 10px;
-  --radius-m: 18px;
-  --radius-l: 28px;
-
-  --shadow-s: 0 2px 8px rgba(43,26,26,.08);
-  --shadow-m: 0 12px 32px -8px rgba(80,21,48,.22);
-  --shadow-gold: 0 10px 26px -10px rgba(201,169,110,.55);
-
-  --header-h: 72px;
-  --ease-out: cubic-bezier(.16,1,.3,1);
-}
-
-/* ---------- Reset & base ---------- */
-*, *::before, *::after{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; scroll-padding-top: calc(var(--header-h) + 12px); }
-
-@media (prefers-reduced-motion: reduce){
-  html{ scroll-behavior:auto; }
-  *, *::before, *::after{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
-  .story-step.is-lit .story-marker{ transform:none; }
-  .budget-success{ animation:none; }
-}
-
-body{
-  margin:0;
-  font-family:var(--font-body);
-  color:var(--ink);
-  background:var(--ivory);
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-}
-
-h1,h2,h3{
-  font-family:var(--font-display);
-  color:var(--bordeaux-dark);
-  line-height:1.15;
-  letter-spacing:-.01em;
-  margin:0;
-}
-
-p{ margin:0; max-width:70ch; }
-
-a{ color:inherit; text-decoration:none; }
-
-img, svg{ display:block; max-width:100%; }
-
-ul{ margin:0; padding:0; list-style:none; }
-
-button{ font-family:inherit; cursor:pointer; background:none; border:none; color:inherit; }
-
-input, select, textarea{ font-family:inherit; font-size:1rem; color:var(--ink); }
-
-/* Browser surfaces: selection, focus, scrollbar */
-::selection{ background:var(--bordeaux); color:var(--ivory); }
-
-:focus-visible{ outline:2.5px solid var(--gold); outline-offset:3px; border-radius:4px; }
-
-html{ scrollbar-color: var(--gold) var(--ivory-deep); scrollbar-width: thin; }
-::-webkit-scrollbar{ width:11px; height:11px; }
-::-webkit-scrollbar-track{ background:var(--ivory-deep); }
-::-webkit-scrollbar-thumb{ background:var(--gold); border-radius:99px; border:3px solid var(--ivory-deep); }
-::-webkit-scrollbar-thumb:hover{ background:var(--bordeaux); }
-
-.skip-link{
-  position:absolute; left:-999px; top:0; z-index:999;
-  background:var(--bordeaux); color:var(--ivory); padding:.8em 1.2em; border-radius:0 0 var(--radius-s) 0;
-}
-.skip-link:focus{ left:0; }
-
-/* ---------- Layout helpers ---------- */
-.section-head{
-  max-width:640px;
-  margin:0 auto 2.4rem;
-  padding:0 1.4rem;
-  text-align:center;
-}
-.section-head h2{ font-size:clamp(1.7rem, 4.6vw, 2.4rem); }
-.section-head p{ margin:.9rem auto 0; color:var(--ink-soft); max-width:52ch; }
-
-section{ padding:5rem 0; }
-section > .section-head + * { margin-left:auto; margin-right:auto; }
-
-.icon{ width:1.2em; height:1.2em; flex-shrink:0; }
-
-/* Reveal-on-scroll: one authored moment, applied uniformly */
-.reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s var(--ease-out), transform .7s var(--ease-out); }
-.reveal.is-visible{ opacity:1; transform:none; }
-
-/* ---------- Placeholders (fotos / video de relleno) ---------- */
-.ph.placeholder{
-  position:relative;
-  background:linear-gradient(155deg, var(--gold-soft) 0%, var(--ivory-deep) 65%);
-  border:1px solid rgba(107,30,58,.14);
-  border-radius:var(--radius-m);
-  overflow:hidden;
-  display:flex; align-items:flex-end;
-}
-.ph.placeholder::before{
-  content:"";
-  position:absolute; inset:0;
-  background:
-    radial-gradient(circle at 32% 34%, rgba(107,30,58,.16) 0, rgba(107,30,58,.16) 1.5px, transparent 1.5px) 0 0/26px 26px,
-    radial-gradient(circle at 32% 34%, rgba(107,30,58,.16) 0, rgba(107,30,58,.16) 1.5px, transparent 1.5px) 13px 13px/26px 26px;
-  opacity:.5;
-}
-.ph.placeholder::after{
-  content: attr(data-ph);
-  display:block;
-  width:100%;
-  padding:.6em .9em;
-  font-size:.78rem;
-  font-weight:600;
-  letter-spacing:.02em;
-  color:var(--bordeaux-dark);
-  background:linear-gradient(to top, rgba(250,246,240,.92), rgba(250,246,240,0));
-}
-
-/* ---------- Header ---------- */
-.site-header{
-  position:fixed; inset:0 0 auto 0; z-index:100; height:var(--header-h);
-  border-bottom:1px solid rgba(107,30,58,.1);
-}
-.site-header::before{
-  content:"";
-  position:absolute; inset:0; z-index:-1;
-  background:rgba(250,246,240,.86);
-  backdrop-filter:blur(10px) saturate(1.2);
-  -webkit-backdrop-filter:blur(10px) saturate(1.2);
-}
-.header-inner{
-  height:100%; max-width:1320px; margin:0 auto; padding:0 1.4rem;
-  display:flex; align-items:center; justify-content:space-between; gap:1rem;
-}
-.brand{ display:flex; align-items:center; gap:.6rem; }
-.brand-mark{
-  width:38px; height:38px; border-radius:50%;
-  background:var(--bordeaux); color:var(--ivory);
-  display:flex; align-items:center; justify-content:center;
-  font-family:var(--font-display); font-weight:700; font-size:.95rem;
-}
-.brand-name{ font-family:var(--font-display); font-weight:700; font-size:1.15rem; color:var(--bordeaux-dark); white-space:nowrap; }
-
-.main-nav{
-  position:fixed; inset:var(--header-h) 0 0 0; z-index:99;
-  background:var(--ivory);
-  padding:1.6rem 1.4rem 2.4rem;
-  transform:translateY(-8px);
-  opacity:0; visibility:hidden;
-  transition:opacity .28s var(--ease-out), transform .28s var(--ease-out), visibility 0s linear .28s;
-  overflow-y:auto;
-}
-.main-nav.is-open{
-  opacity:1; visibility:visible; transform:none;
-  transition:opacity .28s var(--ease-out), transform .28s var(--ease-out);
-}
-.main-nav ul{ display:flex; flex-direction:column; gap:.1rem; }
-.main-nav ul a{
-  display:block; padding:.85rem .2rem; font-weight:600; font-size:1.05rem;
-  color:var(--bordeaux-dark); border-bottom:1px solid rgba(107,30,58,.08);
-}
-.nav-cta{ display:block; margin-top:1.4rem; text-align:center; }
-
-.nav-toggle{
-  width:44px; height:44px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px;
-  border-radius:50%;
-}
-.nav-toggle span{ width:22px; height:2px; background:var(--bordeaux-dark); transition:transform .25s var(--ease-out), opacity .2s; }
-.nav-toggle[aria-expanded="true"] span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
-.nav-toggle[aria-expanded="true"] span:nth-child(2){ opacity:0; }
-.nav-toggle[aria-expanded="true"] span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
-
-/* ---------- Buttons ---------- */
-.btn{
-  display:inline-flex; align-items:center; justify-content:center; gap:.55em;
-  padding:.95em 1.7em;
-  border-radius:99px;
-  font-weight:600; font-size:.98rem;
-  transition:transform .2s var(--ease-out), box-shadow .2s var(--ease-out), background .2s;
-  white-space:nowrap;
-}
-.btn-primary{ background:var(--bordeaux); color:var(--ivory); box-shadow:var(--shadow-m); }
-.btn-primary:hover{ background:var(--bordeaux-dark); transform:translateY(-2px); box-shadow:0 16px 34px -10px rgba(80,21,48,.35); }
-.btn-outline{ border:1.5px solid var(--bordeaux); color:var(--bordeaux-dark); width:100%; }
-.btn-outline:hover{ background:var(--bordeaux); color:var(--ivory); }
-.btn-whatsapp{ background:var(--paper); color:var(--bordeaux-dark); border:1.5px solid var(--gold); }
-.btn-whatsapp:hover{ background:var(--gold-soft); transform:translateY(-2px); box-shadow:var(--shadow-gold); }
-.btn-small{ padding:.6em 1.3em; font-size:.9rem; }
-.btn-block{ width:100%; }
-
-/* ---------- Hero ---------- */
-.hero{
-  padding-top:calc(var(--header-h) + 2.4rem);
-  display:flex; flex-direction:column; gap:2rem;
-  max-width:1240px; margin:0 auto; padding-left:1.4rem; padding-right:1.4rem;
-}
-.hero-media .ph{ aspect-ratio:4/3; }
-.hero h1{ font-size:clamp(2.1rem, 7vw, 3.6rem); }
-.hero-lead{ margin-top:1.1rem; font-size:1.08rem; color:var(--ink-soft); }
-.hero-actions{ margin-top:1.8rem; display:flex; flex-wrap:wrap; gap:.9rem; }
-
-/* ---------- Sobre nosotros ---------- */
-.about{
-  max-width:1240px; margin:0 auto; padding:5rem 1.4rem;
-  display:flex; flex-direction:column; gap:2.4rem;
-}
-.about-media .ph{ aspect-ratio:5/4; }
-.about-content h2{ font-size:clamp(1.7rem, 5vw, 2.5rem); margin-bottom:1.1rem; }
-.about-content > p{ color:var(--ink-soft); }
-.about-points{ margin-top:1.6rem; display:flex; flex-direction:column; gap:.85rem; }
-.about-points li{ display:flex; align-items:center; gap:.8rem; font-weight:600; color:var(--bordeaux-dark); }
-.point-num{
-  font-family:var(--font-display); font-size:1.05rem; font-weight:700; color:var(--bordeaux);
-  background:var(--bordeaux-tint); padding:.15em .55em; border-radius:99px; min-width:2.4em; text-align:center;
-}
-.point-mark{ color:var(--gold); font-size:1.1rem; }
-
-/* ---------- Así se vive una noche (narrativa) ---------- */
-.story{ background:var(--paper); }
-.story-timeline{
-  max-width:900px; margin:0 auto; padding:0 1.4rem;
-  display:flex; flex-direction:column; gap:2.6rem;
-  counter-reset:none;
-}
-.story-step{
-  position:relative;
-  display:grid; grid-template-columns:auto 1fr; gap:1.1rem 1.2rem;
-  padding-left:.2rem;
-}
-.story-step:not(:last-child)::before{
-  content:"";
-  position:absolute; left:22px; top:52px; bottom:-2.6rem;
-  width:2px;
-  background:repeating-linear-gradient(to bottom, var(--gold-soft) 0 6px, transparent 6px 12px);
-  transition:background .5s var(--ease-out);
-}
-.story-step.is-lit:not(:last-child)::before{
-  background:var(--bordeaux);
-}
-.story-marker{
-  grid-row:1; width:44px; height:44px; border-radius:50%;
-  background:var(--ivory); color:var(--bordeaux);
-  border:2px solid var(--gold-soft);
-  display:flex; align-items:center; justify-content:center;
-  font-family:var(--font-display); font-weight:700; font-size:1.15rem;
-  flex-shrink:0; z-index:1;
-  transition:background .5s var(--ease-out), color .5s var(--ease-out), border-color .5s var(--ease-out), box-shadow .5s var(--ease-out), transform .5s var(--ease-out);
-}
-.story-step.is-lit .story-marker{
-  background:var(--bordeaux); color:var(--ivory); border-color:var(--bordeaux);
-  box-shadow:0 0 0 6px rgba(107,30,58,.12);
-  transform:scale(1.06);
-}
-.story-media{ grid-column:2; }
-.story-media .ph{ aspect-ratio:16/10; }
-.story-copy{ grid-column:2; }
-.story-copy h3{ font-size:1.3rem; margin-bottom:.5rem; }
-.story-copy p{ color:var(--ink-soft); font-size:.96rem; }
-.story-tags{ display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1rem; }
-.story-tags li{
-  font-size:.78rem; font-weight:600; color:var(--bordeaux-dark);
-  background:var(--bordeaux-tint); padding:.35em .8em; border-radius:99px;
-}
-
-/* ---------- Tipos de eventos ---------- */
-.events-grid{
-  max-width:1240px; margin:0 auto; padding:0 1.4rem;
-  display:grid; grid-template-columns:repeat(2,1fr); gap:1rem;
-}
-.event-item{ margin:0; }
-.event-item .ph{ aspect-ratio:1/1; margin-bottom:.7rem; }
-.event-item figcaption{ font-weight:600; color:var(--bordeaux-dark); font-size:.95rem; text-align:center; }
-
-/* ---------- Paquetes ---------- */
-.packages{ background:var(--paper); }
-.packages-grid{
-  max-width:1240px; margin:0 auto; padding:0 1.4rem;
-  display:grid; grid-template-columns:1fr; gap:1.4rem;
-}
-.package-card{
-  padding:2rem 1.7rem;
-  background:var(--ivory);
-  border-radius:var(--radius-l);
-  border:1px solid rgba(107,30,58,.1);
-  display:flex; flex-direction:column; gap:1.1rem;
-}
-.package-card h3{ font-size:1.5rem; display:flex; flex-direction:column; gap:.15rem; }
-.package-card h3 span{ font-family:var(--font-body); font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--bordeaux); }
-.package-desc{ color:var(--ink-soft); font-size:.96rem; }
-.package-list{ display:flex; flex-direction:column; gap:.55rem; flex-grow:1; }
-.package-list li{ padding-left:1.3em; position:relative; font-size:.94rem; color:var(--ink); }
-.package-list li::before{ content:"—"; position:absolute; left:0; color:var(--gold); }
-.package-card--highlight{
-  background:var(--bordeaux); color:var(--ivory);
-  box-shadow:var(--shadow-m);
-}
-.package-card--highlight h3, .package-card--highlight .package-desc, .package-card--highlight .package-list li{ color:var(--ivory); }
-.package-card--highlight .package-list li::before{ color:var(--gold); }
-.package-card--highlight h3 span{ color:var(--gold-soft); }
-.package-card--highlight .btn-outline{ border-color:var(--gold); color:var(--ivory); }
-.package-card--highlight .btn-outline:hover{ background:var(--gold); color:var(--bordeaux-dark); }
-
-/* ---------- Galería ---------- */
-.gallery-grid{
-  max-width:1240px; margin:0 auto; padding:0 1.4rem;
-  display:grid; grid-template-columns:repeat(2,1fr); gap:.8rem;
-}
-.gallery-item{ padding:0; text-align:left; width:100%; }
-.gallery-item.ph{ aspect-ratio:1/1; width:100%; transition:transform .2s var(--ease-out); }
-.gallery-item.ph:hover{ transform:scale(1.02); }
-
-/* ---------- Videos ---------- */
-.videos-grid{
-  max-width:1240px; margin:0 auto; padding:0 1.4rem;
-  display:grid; grid-template-columns:1fr; gap:1rem;
-}
-.ph-video{ aspect-ratio:16/9; }
-
-/* ---------- FAQ ---------- */
-.faq-list{ max-width:760px; margin:0 auto; padding:0 1.4rem; display:flex; flex-direction:column; gap:.8rem; }
-.faq-item{
-  background:var(--paper); border:1px solid rgba(107,30,58,.1); border-radius:var(--radius-m);
-  padding:1.1rem 1.3rem;
-}
-.faq-item summary{
-  cursor:pointer; font-weight:600; color:var(--bordeaux-dark); list-style:none;
-  display:flex; justify-content:space-between; align-items:center; gap:1rem;
-}
-.faq-item summary::-webkit-details-marker{ display:none; }
-.faq-item summary::after{
-  content:"+"; font-size:1.4rem; color:var(--gold); flex-shrink:0; transition:transform .2s var(--ease-out); line-height:1;
-}
-.faq-item[open] summary::after{ transform:rotate(45deg); }
-.faq-item p{ margin-top:.9rem; color:var(--ink-soft); font-size:.95rem; }
-
-/* ---------- Testimonios ---------- */
-.testimonial-carousel{ max-width:760px; margin:0 auto; padding:0 1.4rem; }
-.testimonial-track{
-  display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:1.2rem;
-  scrollbar-width:none; -ms-overflow-style:none;
-  padding-bottom:.4rem;
-}
-.testimonial-track::-webkit-scrollbar{ display:none; }
-.testimonial{
-  flex:0 0 100%; scroll-snap-align:start;
-  background:var(--bordeaux-tint); border-radius:var(--radius-l);
-  padding:2.2rem 1.8rem; margin:0;
-}
-.testimonial p{ font-family:var(--font-display); font-size:1.2rem; font-style:italic; color:var(--bordeaux-dark); line-height:1.5; max-width:100%; }
-.testimonial footer{ margin-top:1.1rem; font-size:.85rem; font-weight:600; color:var(--ink-soft); }
-.testimonial-dots{ display:flex; justify-content:center; gap:.5rem; margin-top:1.3rem; }
-.testimonial-dots button{ width:9px; height:9px; border-radius:50%; background:var(--gold-soft); transition:background .2s, transform .2s; }
-.testimonial-dots button.is-active{ background:var(--bordeaux); transform:scale(1.2); }
-
-/* ---------- Formulario de presupuesto ---------- */
-.budget{ background:var(--paper); }
-.budget-form{
-  max-width:640px; margin:0 auto; padding:0 1.4rem;
-  display:flex; flex-direction:column; gap:1.2rem;
-}
-.form-row{ display:flex; flex-direction:column; gap:.45rem; }
-.form-row label, .form-row legend{ font-weight:600; font-size:.92rem; color:var(--bordeaux-dark); padding:0; }
-.optional{ font-weight:400; color:var(--ink-soft); }
-.form-row input, .form-row select, .form-row textarea{
-  padding:.85em 1em; border-radius:var(--radius-s); border:1.5px solid rgba(107,30,58,.18);
-  background:var(--ivory); transition:border-color .2s, box-shadow .2s;
-}
-.form-row input:focus, .form-row select:focus, .form-row textarea:focus{
-  border-color:var(--bordeaux); box-shadow:0 0 0 4px rgba(107,30,58,.1); outline:none;
-}
-.checkbox-grid{ display:grid; grid-template-columns:1fr 1fr; gap:.6rem .8rem; margin-top:.4rem; }
-.checkbox-grid label{ display:flex; align-items:center; gap:.5rem; font-weight:400; font-size:.9rem; color:var(--ink); }
-.checkbox-grid input{ width:17px; height:17px; accent-color:var(--bordeaux); }
-.form-error{ color:var(--bordeaux); font-size:.88rem; font-weight:600; background:var(--bordeaux-tint); padding:.8em 1em; border-radius:var(--radius-s); }
-.form-note{ font-size:.82rem; color:var(--ink-soft); text-align:center; }
-
-/* ---------- Confirmación cálida tras enviar la consulta ---------- */
-.budget-success{
-  max-width:480px; margin:0 auto; padding:2.6rem 1.8rem;
-  text-align:center;
-  animation:budget-success-in .6s var(--ease-out);
-}
-@keyframes budget-success-in{
-  from{ opacity:0; transform:translateY(10px); }
-  to{ opacity:1; transform:none; }
-}
-.budget-success-mark{
-  width:56px; height:56px; margin:0 auto 1.2rem;
-  border-radius:50%; background:var(--bordeaux); color:var(--ivory);
-  display:flex; align-items:center; justify-content:center;
-  font-size:1.6rem; font-weight:700;
-}
-.budget-success h3{ font-size:1.3rem; margin-bottom:.7rem; }
-.budget-success p{ color:var(--ink-soft); font-size:.94rem; margin:0 auto 1.4rem; }
-.budget-success .btn{ margin:0 auto; }
-.budget-success-back{
-  display:block; margin:1rem auto 0; font-size:.85rem; font-weight:600;
-  color:var(--ink-soft); text-decoration:underline; text-underline-offset:3px;
-}
-.budget-success-back:hover{ color:var(--bordeaux); }
-
-/* ---------- Contacto ---------- */
-.contact-grid{
-  max-width:1240px; margin:0 auto; padding:0 1.4rem;
-  display:grid; grid-template-columns:1fr; gap:.9rem;
-}
-.contact-card{
-  display:flex; align-items:center; gap:.9rem;
-  padding:1.2rem 1.4rem; background:var(--paper);
-  border:1px solid rgba(107,30,58,.1); border-radius:var(--radius-m);
-  font-weight:600; color:var(--bordeaux-dark);
-  transition:transform .2s var(--ease-out), box-shadow .2s var(--ease-out);
-}
-.contact-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-s); }
-.contact-card .icon{ width:1.6em; height:1.6em; color:var(--gold); }
-.contact-card strong{ color:var(--bordeaux); }
-
-/* ---------- Footer ---------- */
-.site-footer{ background:var(--bordeaux-dark); color:var(--ivory); padding:2.6rem 1.4rem; }
-.footer-inner{ max-width:1240px; margin:0 auto; display:flex; flex-direction:column; align-items:center; gap:1.4rem; text-align:center; }
-.footer-brand{ display:flex; align-items:center; gap:.6rem; font-family:var(--font-display); font-weight:700; }
-.footer-brand .brand-mark{ background:var(--gold); color:var(--bordeaux-dark); }
-.footer-nav{ display:flex; flex-wrap:wrap; justify-content:center; gap:1.2rem; font-size:.9rem; opacity:.85; }
-.footer-copy{ font-size:.8rem; opacity:.6; }
-
-/* ---------- Botón flotante WhatsApp ---------- */
-.whatsapp-float{
-  position:fixed; right:1.2rem; bottom:1.2rem; z-index:90;
-  width:58px; height:58px; border-radius:50%;
-  background:var(--bordeaux); color:var(--ivory);
-  display:flex; align-items:center; justify-content:center;
-  box-shadow:var(--shadow-m);
-  transition:transform .2s var(--ease-out), box-shadow .2s var(--ease-out);
-}
-.whatsapp-float:hover{ transform:scale(1.08); box-shadow:0 16px 34px -8px rgba(80,21,48,.4); }
-.whatsapp-float .icon{ width:1.7em; height:1.7em; }
-
-/* ---------- Lightbox ---------- */
-.lightbox{
-  position:fixed; inset:0; z-index:200;
-  background:rgba(43,26,26,.88);
-  display:flex; align-items:center; justify-content:center;
-  padding:2rem;
-}
-.lightbox[hidden]{ display:none; }
-.lightbox-content{ width:min(90vw, 720px); aspect-ratio:4/3; }
-.lightbox-close{
-  position:absolute; top:1.2rem; right:1.2rem;
-  width:44px; height:44px; border-radius:50%;
-  background:rgba(250,246,240,.15); color:var(--ivory); font-size:1.6rem; line-height:1;
-}
-.lightbox-close:hover{ background:rgba(250,246,240,.28); }
-
-/* =========================================================
-   BREAKPOINTS
-   ========================================================= */
-@media (min-width:640px){
-  .events-grid{ grid-template-columns:repeat(4,1fr); }
-  .gallery-grid{ grid-template-columns:repeat(3,1fr); }
-  .checkbox-grid{ grid-template-columns:repeat(3,1fr); }
-}
-
-@media (min-width:900px){
-  .main-nav{
-    position:static; inset:auto; padding:0; background:none;
-    opacity:1; visibility:visible; transform:none;
-    display:flex; align-items:center; gap:1.1rem;
-  }
-  .main-nav ul{ flex-direction:row; gap:1.05rem; }
-  .main-nav ul a{ padding:.4rem 0; font-size:.87rem; border-bottom:none; position:relative; white-space:nowrap; }
-  .main-nav ul a::after{
-    content:""; position:absolute; left:0; right:100%; bottom:-2px; height:2px; background:var(--gold);
-    transition:right .2s var(--ease-out);
-  }
-  .main-nav ul a:hover::after{ right:0; }
-  .nav-cta{ display:none; margin-top:0; }
-  .nav-toggle{ display:none; }
-
-  .hero{ flex-direction:row-reverse; align-items:center; gap:4rem; padding-top:calc(var(--header-h) + 3rem); padding-bottom:2rem; }
-  .hero-media, .hero-content{ flex:1 1 50%; }
-  .hero-content{ max-width:560px; }
-
-  .about{ flex-direction:row; align-items:center; gap:4.5rem; }
-  .about-media, .about-content{ flex:1 1 50%; }
-
-  .story-step{
-    grid-template-columns:1fr auto 1fr;
-    align-items:center; gap:0 2.6rem;
-  }
-  .story-step:not(:last-child)::before{ left:50%; transform:translateX(-1px); top:64px; }
-  .story-marker{ grid-column:2; grid-row:auto; }
-  .story-step:nth-child(odd) .story-media{ grid-column:1; grid-row:1; }
-  .story-step:nth-child(odd) .story-copy{ grid-column:3; grid-row:1; }
-  .story-step:nth-child(even) .story-media{ grid-column:3; grid-row:1; }
-  .story-step:nth-child(even) .story-copy{ grid-column:1; grid-row:1; text-align:right; }
-  .story-step:nth-child(even) .story-tags{ justify-content:flex-end; }
-
-  .events-grid{ grid-template-columns:repeat(4,1fr); }
-
-  .packages-grid{ grid-template-columns:repeat(3,1fr); }
-  .package-card--highlight{ transform:translateY(-14px); }
-
-  .gallery-grid{ grid-template-columns:repeat(4,1fr); }
-
-  .videos-grid{ grid-template-columns:repeat(3,1fr); }
-
-  .contact-grid{ grid-template-columns:repeat(3,1fr); }
-}
-
-@media (min-width:1180px){
-  .nav-cta{ display:inline-flex; }
-  .main-nav{ gap:1.6rem; }
-  .main-nav ul{ gap:1.5rem; }
-  .main-nav ul a{ font-size:.94rem; }
-}
-
-@media (min-width:1200px){
-  .hero h1{ font-size:3.6rem; }
-  section{ padding:6.5rem 0; }
-}
-
-
-/* =========================================================
-   BOLDER — la página completa, con el vocabulario que ya existe
-   Picos: hero (bordó), "+20" gigante, noche, testimonios (bordó)
-   ========================================================= */
-
-/* Títulos de sección: escala de display más firme */
-.section-head h2{ font-size:clamp(2rem, 6.2vw, 3.5rem); }
-
-/* --- Pico 1: Hero bordó a sangre --- */
-.hero{
-  max-width:none; margin:0;
-  background:var(--bordeaux);
-  padding-inline:max(1.4rem, calc((100vw - 1240px) / 2 + 1.4rem));
-  padding-bottom:4rem;
-}
-.hero h1{ color:var(--ivory); font-size:clamp(2.6rem, 9vw, 5rem); line-height:1.02; letter-spacing:-.02em; }
-.hero-lead{ color:rgba(250,246,240,.86); font-size:1.12rem; }
-.hero .btn-primary{ background:var(--gold); color:var(--bordeaux-dark); box-shadow:none; }
-.hero .btn-primary:hover{ background:var(--gold-soft); }
-.hero .btn-whatsapp{ background:transparent; color:var(--ivory); border-color:rgba(250,246,240,.55); }
-.hero .btn-whatsapp:hover{ background:rgba(250,246,240,.12); box-shadow:none; }
-.hero .ph.placeholder{ border-color:rgba(232,217,188,.5); }
-@media (min-width:900px){
-  .hero-content{ max-width:660px; flex-basis:56%; }
-  .hero-media{ flex-basis:44%; }
-  .hero{ padding-bottom:5rem; }
-}
-
-/* --- Pico 2: el "+20" como protagonista --- */
-.about-stat{ display:flex; flex-direction:column; margin-bottom:1rem; max-width:none; }
-.about-stat-num{
-  font-family:var(--font-display); font-weight:700; color:var(--bordeaux);
-  font-size:clamp(5.5rem, 22vw, 10rem); line-height:.85; letter-spacing:-.03em;
-}
-.about-stat-label{ font-weight:700; color:var(--bordeaux-dark); font-size:1rem; margin-top:.5rem; }
-
-/* --- Noche: marcadores más contundentes --- */
-.story-marker{ width:56px; height:56px; font-size:1.6rem; }
-.story-step:not(:last-child)::before{ left:27px; top:64px; }
-.story-copy h3{ font-size:1.6rem; }
-@media (min-width:900px){
-  .story-step:not(:last-child)::before{ left:50%; top:80px; }
-  .story-copy h3{ font-size:2rem; }
-}
-
-/* --- Pico 3: testimonios bordó a sangre --- */
-.testimonials{ background:var(--bordeaux); }
-.testimonials .section-head h2{ color:var(--ivory); }
-.testimonial{ background:transparent; padding:1rem 0; text-align:center; }
-.testimonial p{ color:var(--ivory); font-size:clamp(1.5rem, 4.6vw, 2.3rem); line-height:1.3; margin:0 auto; }
-.testimonial footer{ color:var(--gold-soft); margin-top:1.4rem; }
-.testimonial-dots button{ background:rgba(250,246,240,.3); }
-.testimonial-dots button.is-active{ background:var(--gold); }
-
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"EventPlanner","name":"La Familia · Organización de Eventos","description":"Organización de casamientos, 15 años, cumpleaños, bautismos, eventos empresariales e institucionales.","areaServed":"Formosa, Argentina","address":{"@type":"PostalAddress","addressLocality":"Formosa","addressRegion":"Formosa","addressCountry":"AR"},"telephone":"+5493704573516"}
+</script>
 </head>
 <body>
 
-<a class="skip-link" href="#inicio">Ir al contenido</a>
+<a class="skip-link" href="#contenido">Ir al contenido</a>
 
 <!-- ===================== HEADER / NAV ===================== -->
 <header class="site-header" id="header">
@@ -629,19 +44,18 @@ section > .section-head + * { margin-left:auto; margin-right:auto; }
         <li><a href="#galeria">Galería</a></li>
         <li><a href="#videos">Videos</a></li>
         <li><a href="#preguntas">Preguntas</a></li>
-        <li><a href="#testimonios">Testimonios</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
       <a href="#presupuesto" class="btn btn-primary btn-small nav-cta">Solicitar presupuesto</a>
     </nav>
 
-    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
-<main>
+<main id="contenido">
 
   <!-- ===================== 1. INICIO ===================== -->
   <section class="hero" id="inicio">
@@ -671,9 +85,9 @@ section > .section-head + * { margin-left:auto; margin-right:auto; }
       <h2>Acompañando cada celebración</h2>
       <p>Somos un equipo familiar y nos involucramos personalmente en cada evento que organizamos. Nos capacitamos todo el año para traer nuevas ideas, pero lo que no cambia es la forma de trabajar: cerca de cada anfitrión, atentos a los detalles y pendientes de que los invitados la pasen bien.</p>
       <ul class="about-points">
-        <li><span class="point-mark" aria-hidden="true">✓</span> Trabajo familiar, directo y personalizado</li>
-        <li><span class="point-mark" aria-hidden="true">✓</span> Capacitación permanente en organización de eventos</li>
-        <li><span class="point-mark" aria-hidden="true">✓</span> Compromiso con el anfitrión y con cada invitado</li>
+        <li><svg class="point-mark" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"/></svg> Trabajo familiar, directo y personalizado</li>
+        <li><svg class="point-mark" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"/></svg> Capacitación permanente en organización de eventos</li>
+        <li><svg class="point-mark" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"/></svg> Compromiso con el anfitrión y con cada invitado</li>
       </ul>
     </div>
   </section>
@@ -810,14 +224,14 @@ section > .section-head + * { margin-left:auto; margin-right:auto; }
       <p>Una selección de eventos, decoración y detalles de festejos anteriores.</p>
     </div>
     <div class="gallery-grid" id="gallery-grid">
-      <button class="ph placeholder gallery-item" data-ph="Evento completo"></button>
-      <button class="ph placeholder gallery-item" data-ph="Decoración"></button>
-      <button class="ph placeholder gallery-item" data-ph="Mesa dulce"></button>
-      <button class="ph placeholder gallery-item" data-ph="Salón"></button>
-      <button class="ph placeholder gallery-item" data-ph="Iluminación"></button>
-      <button class="ph placeholder gallery-item" data-ph="Catering"></button>
-      <button class="ph placeholder gallery-item" data-ph="Equipamiento"></button>
-      <button class="ph placeholder gallery-item" data-ph="Evento destacado"></button>
+      <button type="button" class="ph placeholder gallery-item" data-ph="Evento completo" aria-label="Ampliar foto: Evento completo"></button>
+      <button type="button" class="ph placeholder gallery-item" data-ph="Decoración" aria-label="Ampliar foto: Decoración"></button>
+      <button type="button" class="ph placeholder gallery-item" data-ph="Mesa dulce" aria-label="Ampliar foto: Mesa dulce"></button>
+      <button type="button" class="ph placeholder gallery-item" data-ph="Salón" aria-label="Ampliar foto: Salón"></button>
+      <button type="button" class="ph placeholder gallery-item" data-ph="Iluminación" aria-label="Ampliar foto: Iluminación"></button>
+      <button type="button" class="ph placeholder gallery-item" data-ph="Catering" aria-label="Ampliar foto: Catering"></button>
+      <button type="button" class="ph placeholder gallery-item" data-ph="Equipamiento" aria-label="Ampliar foto: Equipamiento"></button>
+      <button type="button" class="ph placeholder gallery-item" data-ph="Evento destacado" aria-label="Ampliar foto: Evento destacado"></button>
     </div>
   </section>
 
@@ -864,7 +278,9 @@ section > .section-head + * { margin-left:auto; margin-right:auto; }
   </section>
 
   <!-- ===================== 9. TESTIMONIOS ===================== -->
-  <section class="testimonials" id="testimonios">
+  <!-- OCULTA hasta tener testimonios reales con permiso de quien los escribió.
+       Para mostrarla: quitar el atributo hidden y volver a agregar "Testimonios" al menú. -->
+  <section class="testimonials" id="testimonios" hidden>
     <div class="section-head">
       <h2>Lo que dicen quienes ya festejaron con nosotros</h2>
     </div>
@@ -897,15 +313,15 @@ section > .section-head + * { margin-left:auto; margin-right:auto; }
     <form class="budget-form" id="budget-form" novalidate>
       <div class="form-row">
         <label for="f-nombre">Nombre</label>
-        <input type="text" id="f-nombre" name="nombre" required autocomplete="name">
+        <input type="text" id="f-nombre" name="nombre" required autocomplete="name" aria-describedby="form-error">
       </div>
       <div class="form-row">
         <label for="f-telefono">Teléfono / WhatsApp</label>
-        <input type="tel" id="f-telefono" name="telefono" required autocomplete="tel" placeholder="Ej: 3704 000000">
+        <input type="tel" id="f-telefono" name="telefono" required autocomplete="tel" inputmode="tel" placeholder="Ej: 3704 000000" aria-describedby="form-error">
       </div>
       <div class="form-row">
         <label for="f-evento">Tipo de evento</label>
-        <select id="f-evento" name="evento" required>
+        <select id="f-evento" name="evento" required aria-describedby="form-error">
           <option value="" disabled selected>Elegí una opción</option>
           <option>Casamiento</option>
           <option>15 años</option>
@@ -918,20 +334,20 @@ section > .section-head + * { margin-left:auto; margin-right:auto; }
         </select>
       </div>
       <div class="form-row form-row--half">
-        <label for="f-fecha">Fecha del evento</label>
+        <label for="f-fecha">Fecha del evento <span class="optional">(opcional)</span></label>
         <input type="date" id="f-fecha" name="fecha">
       </div>
       <div class="form-row form-row--half">
-        <label for="f-invitados">Cantidad de invitados</label>
+        <label for="f-invitados">Cantidad de invitados <span class="optional">(opcional)</span></label>
         <input type="number" id="f-invitados" name="invitados" min="1" inputmode="numeric">
       </div>
       <div class="form-row">
-        <label for="f-lugar">Lugar</label>
+        <label for="f-lugar">Lugar <span class="optional">(opcional)</span></label>
         <input type="text" id="f-lugar" name="lugar" placeholder="Salón, quinta, ciudad...">
       </div>
 
       <fieldset class="form-row">
-        <legend>Servicios que necesitás</legend>
+        <legend>Servicios que necesitás <span class="optional">(opcional)</span></legend>
         <div class="checkbox-grid">
           <label><input type="checkbox" name="servicios" value="Organización integral"> Organización integral</label>
           <label><input type="checkbox" name="servicios" value="Catering"> Catering</label>
@@ -986,15 +402,15 @@ section > .section-head + * { margin-left:auto; margin-right:auto; }
         <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
         <span>Mónica<br><strong>3704 563216</strong></span>
       </a>
-      <a class="contact-card" href="#" target="_blank" rel="noopener" aria-label="Instagram (enlace pendiente)">
+      <a class="contact-card" href="#" target="_blank" rel="noopener" hidden><!-- Instagram: poner el link real en href y quitar hidden -->
         <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use href="#icon-instagram"/></svg>
         <span>Instagram</span>
       </a>
-      <a class="contact-card" href="#" target="_blank" rel="noopener" aria-label="Facebook (enlace pendiente)">
+      <a class="contact-card" href="#" target="_blank" rel="noopener" hidden><!-- Facebook: poner el link real en href y quitar hidden -->
         <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use href="#icon-facebook"/></svg>
         <span>Facebook</span>
       </a>
-      <a class="contact-card" href="#" target="_blank" rel="noopener" aria-label="TikTok (enlace pendiente)">
+      <a class="contact-card" href="#" target="_blank" rel="noopener" hidden><!-- TikTok: poner el link real en href y quitar hidden -->
         <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use href="#icon-tiktok"/></svg>
         <span>TikTok</span>
       </a>
@@ -1027,233 +443,20 @@ section > .section-head + * { margin-left:auto; margin-right:auto; }
 </a>
 
 <!-- ===================== LIGHTBOX GALERÍA ===================== -->
-<div class="lightbox" id="lightbox" hidden>
-  <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar">&times;</button>
-  <div class="ph placeholder lightbox-content" id="lightbox-content"></div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada" hidden>
+  <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Cerrar foto"><svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  <div class="ph placeholder lightbox-content" id="lightbox-content" role="img"></div>
 </div>
 
 <!-- ===================== SPRITE DE ÍCONOS ===================== -->
 <svg style="display:none">
+  <symbol id="icon-check" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3ZM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></symbol>
   <symbol id="icon-instagram" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.2c2.7 0 3 0 4.1.1 1 .1 1.7.2 2.3.5.6.2 1.1.6 1.6 1.1.5.5.8.9 1.1 1.6.2.6.4 1.3.5 2.3.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c-.1 1-.2 1.7-.5 2.3-.2.6-.6 1.1-1.1 1.6-.5.5-.9.8-1.6 1.1-.6.2-1.3.4-2.3.5-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-1-.1-1.7-.2-2.3-.5-.6-.2-1.1-.6-1.6-1.1-.5-.5-.8-.9-1.1-1.6-.2-.6-.4-1.3-.5-2.3C2.2 15 2.2 14.7 2.2 12s0-3 .1-4.1c.1-1 .2-1.7.5-2.3.2-.6.6-1.1 1.1-1.6.5-.5.9-.8 1.6-1.1.6-.2 1.3-.4 2.3-.5C9 2.2 9.3 2.2 12 2.2Zm0 1.8c-2.7 0-3 0-4 .1-.9 0-1.4.2-1.7.3-.4.2-.7.3-1 .6-.3.3-.5.6-.6 1-.1.3-.3.8-.3 1.7-.1 1-.1 1.3-.1 4s0 3 .1 4c0 .9.2 1.4.3 1.7.2.4.3.7.6 1 .3.3.6.5 1 .6.3.1.8.3 1.7.3 1 .1 1.3.1 4 .1s3 0 4-.1c.9 0 1.4-.2 1.7-.3.4-.2.7-.3 1-.6.3-.3.5-.6.6-1 .1-.3.3-.8.3-1.7.1-1 .1-1.3.1-4s0-3-.1-4c0-.9-.2-1.4-.3-1.7-.2-.4-.3-.7-.6-1-.3-.3-.6-.5-1-.6-.3-.1-.8-.3-1.7-.3-1-.1-1.3-.1-4-.1Zm0 3.6a4.4 4.4 0 1 1 0 8.8 4.4 4.4 0 0 1 0-8.8Zm0 1.8a2.6 2.6 0 1 0 0 5.2 2.6 2.6 0 0 0 0-5.2Zm4.6-2a1 1 0 1 1 0 2.1 1 1 0 0 1 0-2.1Z"/></symbol>
   <symbol id="icon-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21.9v-8.1h2.7l.4-3.2h-3.1V8.5c0-.9.3-1.6 1.6-1.6h1.7V4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.4v3.2H10v8.1h3.5Z"/></symbol>
   <symbol id="icon-tiktok" viewBox="0 0 24 24"><path fill="currentColor" d="M16.6 2h-3.1v13.3a2.6 2.6 0 1 1-2.6-2.6c.2 0 .5 0 .7.1V9.6a5.7 5.7 0 1 0 5 5.6V8.9c1.1.8 2.5 1.3 4 1.3V7.1c-2.2 0-3.9-1.7-4-3.9V2Z"/></symbol>
 </svg>
 
-<script>
-(() => {
-  "use strict";
-
-  /* ---------- Año en el footer ---------- */
-  const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  /* ---------- Menú móvil ---------- */
-  const navToggle = document.getElementById("nav-toggle");
-  const mainNav = document.getElementById("main-nav");
-
-  function closeNav() {
-    mainNav.classList.remove("is-open");
-    navToggle.setAttribute("aria-expanded", "false");
-    navToggle.setAttribute("aria-label", "Abrir menú");
-  }
-  function openNav() {
-    mainNav.classList.add("is-open");
-    navToggle.setAttribute("aria-expanded", "true");
-    navToggle.setAttribute("aria-label", "Cerrar menú");
-  }
-  if (navToggle && mainNav) {
-    navToggle.addEventListener("click", () => {
-      const isOpen = mainNav.classList.contains("is-open");
-      isOpen ? closeNav() : openNav();
-    });
-    mainNav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", closeNav);
-    });
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeNav();
-    });
-  }
-
-  /* ---------- Una noche con nosotros: se enciende al llegar cada momento ---------- */
-  const storySteps = document.querySelectorAll(".story-step");
-  if (storySteps.length && "IntersectionObserver" in window) {
-    const lightIO = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-lit");
-            lightIO.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0, rootMargin: "-45% 0px -45% 0px" } // se enciende al cruzar el centro de la pantalla
-    );
-    storySteps.forEach((el) => lightIO.observe(el));
-  } else {
-    storySteps.forEach((el) => el.classList.add("is-lit"));
-  }
-
-  /* ---------- Revelado al hacer scroll ---------- */
-  const revealTargets = document.querySelectorAll(
-    ".story-step, .event-item, .package-card, .gallery-item, .faq-item, .contact-card, .about-content, .about-media, .hero-content"
-  );
-  revealTargets.forEach((el) => el.classList.add("reveal"));
-
-  if ("IntersectionObserver" in window) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
-    );
-    revealTargets.forEach((el) => io.observe(el));
-  } else {
-    revealTargets.forEach((el) => el.classList.add("is-visible"));
-  }
-
-  /* ---------- Carrusel de testimonios ---------- */
-  const track = document.getElementById("testimonial-track");
-  const dotsWrap = document.getElementById("testimonial-dots");
-
-  if (track && dotsWrap) {
-    const slides = Array.from(track.children);
-    slides.forEach((_, i) => {
-      const dot = document.createElement("button");
-      dot.setAttribute("aria-label", `Ver testimonio ${i + 1}`);
-      if (i === 0) dot.classList.add("is-active");
-      dot.addEventListener("click", () => {
-        slides[i].scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
-      });
-      dotsWrap.appendChild(dot);
-    });
-
-    const dots = Array.from(dotsWrap.children);
-    const syncDots = () => {
-      const trackRect = track.getBoundingClientRect();
-      let closestIndex = 0;
-      let closestDist = Infinity;
-      slides.forEach((slide, i) => {
-        const dist = Math.abs(slide.getBoundingClientRect().left - trackRect.left);
-        if (dist < closestDist) {
-          closestDist = dist;
-          closestIndex = i;
-        }
-      });
-      dots.forEach((d, i) => d.classList.toggle("is-active", i === closestIndex));
-    };
-    track.addEventListener("scroll", () => {
-      window.requestAnimationFrame(syncDots);
-    }, { passive: true });
-  }
-
-  /* ---------- Lightbox de galería ---------- */
-  const lightbox = document.getElementById("lightbox");
-  const lightboxContent = document.getElementById("lightbox-content");
-  const lightboxClose = document.getElementById("lightbox-close");
-
-  document.querySelectorAll(".gallery-item").forEach((item) => {
-    item.addEventListener("click", () => {
-      lightboxContent.setAttribute("data-ph", item.getAttribute("data-ph") || "");
-      lightbox.hidden = false;
-      document.body.style.overflow = "hidden";
-    });
-  });
-
-  function closeLightbox() {
-    lightbox.hidden = true;
-    document.body.style.overflow = "";
-  }
-  if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
-  if (lightbox) {
-    lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
-  }
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && lightbox && !lightbox.hidden) closeLightbox();
-  });
-
-  /* ---------- Formulario de presupuesto → WhatsApp ---------- */
-  const form = document.getElementById("budget-form");
-  const formError = document.getElementById("form-error");
-  const budgetSuccess = document.getElementById("budget-success");
-  const budgetSuccessLink = document.getElementById("budget-success-link");
-  const budgetSuccessBack = document.getElementById("budget-success-back");
-  const WHATSAPP_NUMBER = "5493704573516"; // Raúl. Cambiar si prefieren otro número como principal.
-
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      const nombre = form.nombre.value.trim();
-      const telefono = form.telefono.value.trim();
-      const evento = form.evento.value;
-
-      if (!nombre || !telefono || !evento) {
-        formError.hidden = false;
-        formError.scrollIntoView({ behavior: "smooth", block: "center" });
-        return;
-      }
-      formError.hidden = true;
-
-      const fecha = form.fecha.value;
-      const invitados = form.invitados.value.trim();
-      const lugar = form.lugar.value.trim();
-      const comentarios = form.comentarios.value.trim();
-      const servicios = Array.from(form.querySelectorAll('input[name="servicios"]:checked'))
-        .map((cb) => cb.value);
-
-      const lineas = [
-        "Hola, quiero solicitar un presupuesto:",
-        `Nombre: ${nombre}`,
-        `Teléfono: ${telefono}`,
-        `Tipo de evento: ${evento}`,
-      ];
-      if (fecha) lineas.push(`Fecha: ${fecha}`);
-      if (lugar) lineas.push(`Lugar: ${lugar}`);
-      if (invitados) lineas.push(`Cantidad de invitados: ${invitados}`);
-      if (servicios.length) lineas.push(`Servicios: ${servicios.join(", ")}`);
-      if (comentarios) lineas.push(`Comentarios: ${comentarios}`);
-
-      const mensaje = encodeURIComponent(lineas.join("\n"));
-      const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${mensaje}`;
-
-      // Abrir de forma síncrona con el clic, para que el navegador no lo bloquee.
-      window.open(whatsappUrl, "_blank", "noopener");
-
-      // Reconocer el esfuerzo de completar el formulario con una confirmación
-      // cálida, en vez de mandar a la persona a WhatsApp sin más.
-      if (budgetSuccess) {
-        budgetSuccessLink.href = whatsappUrl;
-        form.hidden = true;
-        budgetSuccess.hidden = false;
-        budgetSuccess.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-
-      // NOTA para quien despliegue este sitio:
-      // Este sitio es estático (sin backend), así que el envío por correo
-      // no puede hacerse solo con este código. Para que la solicitud también
-      // llegue por email, conectar este formulario a un servicio como
-      // Formspree, EmailJS o Web3Forms, y llamarlo acá antes o además de
-      // abrir WhatsApp.
-    });
-  }
-
-  if (budgetSuccessBack) {
-    budgetSuccessBack.addEventListener("click", () => {
-      budgetSuccess.hidden = true;
-      form.hidden = false;
-      form.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  }
-})();
-
-</script>
+<script src="script.js" defer></script>
 </body>
-</html>
+</html>
